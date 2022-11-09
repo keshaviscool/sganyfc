@@ -1,8 +1,23 @@
 {% extends 'base.html' %}
-{% block body %}    
+{% block body %}
+
+<!--Currency Converter widget by FreeCurrencyRates.com -->
+
+<div id='gcw_mainFp9SXyJUG' class='gcw_mainFp9SXyJUG'></div>
+<a id='gcw_siteFp9SXyJUG' href='https://freecurrencyrates.com/en/'>FreeCurrencyRates.com</a>
+<script>function reloadFp9SXyJUG(){ var sc = document.getElementById('scFp9SXyJUG');if (sc) sc.parentNode.removeChild(sc);sc = document.createElement('script');sc.type = 'text/javascript';sc.charset = 'UTF-8';sc.async = true;sc.id='scFp9SXyJUG';sc.src = 'https://freecurrencyrates.com/en/widget-horizontal-editable?iso=SGD-MYR&df=1&p=Fp9SXyJUG&v=fits&source=yahoo&width=480&width_title=300&firstrowvalue=1&thm=dddddd,eeeeee,E78F08,F6A828,FFFFFF,cccccc,ffffff,1C94C4,000000&title=Currency%20Converter&tzo=-480';var div = document.getElementById('gcw_mainFp9SXyJUG');div.parentNode.insertBefore(sc, div);} reloadFp9SXyJUG(); </script>
+<!-- put custom styles here: .gcw_mainFp9SXyJUG{}, .gcw_headerFp9SXyJUG{}, .gcw_ratesFp9SXyJUG{}, .gcw_sourceFp9SXyJUG{} -->
+
+<!--End of Currency Converter widget by FreeCurrencyRates.com -->
+
 <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
-      <h3 class="title-font text-gray-900 mb-3">Latest news in Malaysia</h3>
+      <div>
+          {% for keyword, value in all_keywords.items() %}
+              <a href="/news/{{ keyword }}" class="btn btn-{% if value == title %}primary{% else %}secondary{% endif %} mb-3" style="margin-right: 8px;">{{ value }}</a>
+          {% endfor %}
+      </div>
+      <h3 class="title-font text-gray-900 mb-3">Latest news on {{ title }}</h3>
     <div class="flex flex-wrap -m-4">
       {% for article in articles %}
       <div class="p-4 md:w-1/3">
@@ -26,36 +41,6 @@
     </div>
   </div>
 </section>
-      <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; margin-top: 50px;">
-
-
-        {% for record in records %}
-        {% if record %}
-        <img src="/static/img/{{ record.color }}-circle.png" alt="{{ record.color }} circle" width="225">
-        <p style="font-size: 1rem; margin-bottom: 50px;">{% if record.keyword == "WLFC" or record.keyword == "WLNFC" %}Woodland Left{% elif record.keyword == "WRFC" or record.keyword == "WRNFC" %}Woodland Right{% elif record.keyword == "TLFC" or record.keyword == "TLNFC" %}Tuas Left{% elif record.keyword == "TRFC" or record.keyword == "TRNFC" %}Tuas Right{% endif %} Last update: {{ record.date }}</p>
-        <!-- <img src="{{ url_for('static', filename='img/green-circle.png') }}" alt="green circle" width="225">
-            <p style="font-size: 1.3rem;">WRFC Last update</p> -->
-            
-            {% else %}
-            {% endif %}
-        {% endfor %}
-
-        <a href="/" class="btn btn-outline-primary" style="margin-bottom: 100px;">Refresh Page</a>
-       
-    </div>
-
-
-
-
-<!--Currency Converter widget by FreeCurrencyRates.com -->
-
-<div id='gcw_mainFp9SXyJUG' class='gcw_mainFp9SXyJUG'></div>
-<a id='gcw_siteFp9SXyJUG' href='https://freecurrencyrates.com/en/'>FreeCurrencyRates.com</a>
-<script>function reloadFp9SXyJUG(){ var sc = document.getElementById('scFp9SXyJUG');if (sc) sc.parentNode.removeChild(sc);sc = document.createElement('script');sc.type = 'text/javascript';sc.charset = 'UTF-8';sc.async = true;sc.id='scFp9SXyJUG';sc.src = 'https://freecurrencyrates.com/en/widget-horizontal-editable?iso=SGD-MYR&df=1&p=Fp9SXyJUG&v=fits&source=yahoo&width=480&width_title=300&firstrowvalue=1&thm=dddddd,eeeeee,E78F08,F6A828,FFFFFF,cccccc,ffffff,1C94C4,000000&title=Currency%20Converter&tzo=-480';var div = document.getElementById('gcw_mainFp9SXyJUG');div.parentNode.insertBefore(sc, div);} reloadFp9SXyJUG(); </script>
-<!-- put custom styles here: .gcw_mainFp9SXyJUG{}, .gcw_headerFp9SXyJUG{}, .gcw_ratesFp9SXyJUG{}, .gcw_sourceFp9SXyJUG{} -->
-
-<!--End of Currency Converter widget by FreeCurrencyRates.com -->
-
 
 <!--petrol price-->
 <div class="text-center text-bg-dark">

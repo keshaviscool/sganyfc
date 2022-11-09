@@ -79,10 +79,26 @@ style="height: 0px !important;"
             <li class="nav-item">
                 <a class="nav-link" href="/about-us">About us</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="/news/malaysia-petrol">News</a>
-              </li>
+              </li> -->
           </ul>
+          {% for record in records %}
+        {% if record %}
+        <div style="display: flex; align-items: center; flex-direction: column; justify-content: center;">
+
+          
+          <img src="/static/img/{{ record.color }}-circle.png" alt="{{ record.color }} circle" width="50">
+          <p style="font-size: 0.5rem; margin-bottom: 5px;">{% if record.keyword == "WLFC" or record.keyword == "WLNFC" %}Woodland Left{% elif record.keyword == "WRFC" or record.keyword == "WRNFC" %}Woodland Right{% elif record.keyword == "TLFC" or record.keyword == "TLNFC" %}Tuas Left{% elif record.keyword == "TRFC" or record.keyword == "TRNFC" %}Tuas Right{% endif %}</p>
+          <p style="font-size: 0.5rem; margin-bottom: 5px; padding: 0 10px;">Last update: {{ record.date }}</p>
+          <!-- <img src="{{ url_for('static', filename='img/green-circle.png') }}" alt="green circle" width="225">
+            <p style="font-size: 1.3rem;">WRFC Last update</p> -->
+          </div>
+            
+            {% else %}
+            {% endif %}
+        {% endfor %}
+
           
         </div>
       </nav>

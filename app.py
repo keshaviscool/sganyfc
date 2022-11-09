@@ -100,10 +100,9 @@ def hello_world():
     final = [
         wl, wr, tl, tr
     ]
-    articles = requests.get(f"https://newsapi.org/v2/everything?q=malaysia&from={datetime.datetime.now().year}-{datetime.datetime.now().month}-{datetime.datetime.now().day}&sortBy=publishedAt&apiKey=2dfc3fb2b70149828b575e9a6a8c0c28").json()['articles'][:1]
+    articles = requests.get(f"https://newsapi.org/v2/everything?q={str(slug['malaysia-stock-index']).lower()}&from={datetime.datetime.now().year}-{datetime.datetime.now().month - 1}-{datetime.datetime.now().day}&sortBy=publishedAt&apiKey=2dfc3fb2b70149828b575e9a6a8c0c28").json()['articles'][:100]
 
-
-    return render_template("index.html", records=final, articles=articles)
+    return render_template("index.html", records=final, articles=articles, all_keywords=slug, title=slug['malaysia-stock-index'])
 
 @app.route('/tnc')
 def tnc():
